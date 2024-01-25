@@ -16,7 +16,10 @@ odoo.define("product_configurator_mrp.FormController", function (require) {
 
         renderButtons: function () {
             var self = this;
-            var $footer = this.footerToButtons ? this.renderer.$("footer") : null;
+            var $footer = null;
+            if (this.footerToButtons)
+                $footer = this.renderer.$el && this.renderer.$("footer");
+
             var mustRenderFooterButtons = $footer && $footer.length;
             self._super.apply(this, arguments);
             if (mustRenderFooterButtons);
