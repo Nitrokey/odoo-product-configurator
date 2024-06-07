@@ -398,7 +398,7 @@
                 <t t-foreach="cfg_step_attribute_line_ids" t-as="line">
                     <t
                         t-set="custom_value"
-                        t-value="custom_value_ids.filtered(lambda x, line=line: x.attribute_id == line.attribute_id)"
+                        t-value="custom_value_ids.filtered(lambda x: x.attribute_id == line.attribute_id)"
                     />
                     <t
                         t-set="available_val"
@@ -491,7 +491,7 @@
                 <t t-foreach="cfg_step_attribute_line_ids" t-as="line">
                     <t
                         t-set="custom_value"
-                        t-value="custom_value_ids.filtered(lambda x, line=line: x.attribute_id == line.attribute_id)"
+                        t-value="custom_value_ids.filtered(lambda x: x.attribute_id == line.attribute_id)"
                     />
                     <t
                         t-set="available_val"
