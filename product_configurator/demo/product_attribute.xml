@@ -135,7 +135,7 @@
     <!-- == COLOR == -->
 
     <record id="product_attribute_color" model="product.attribute">
-        <field name="name">Color</field>
+        <field name="name">Colors</field>
     </record>
 
     <record id="product_attribute_value_red" model="product.attribute.value">
