@@ -23,6 +23,7 @@ error_page = "/website_product_configurator/error_page/"
 
 
 class ProductConfigWebsiteSale(WebsiteSale):
+
     def get_config_session(self, product_tmpl_id):
         cfg_session_obj = request.env["product.config.session"]
         cfg_session = False
