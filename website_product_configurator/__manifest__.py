@@ -1,6 +1,6 @@
 {
     "name": "Website Product Configurator",
-    "version": "15.0.1.2.0",
+    "version": "15.0.1.0.0",
     "summary": """Configure products in e-shop""",
     "author": "Pledra, Odoo Community Association (OCA)",
     "license": "AGPL-3",
@@ -16,7 +16,6 @@
         "data/ir_config_parameter_data.xml",
         "data/config_form_templates.xml",
         "data/cron.xml",
-        # "views/assets.xml",
         "views/product_view.xml",
         "views/templates.xml",
         "views/res_config_settings_view.xml",
@@ -29,13 +28,8 @@
     "maintainers": ["PCatinean"],
     "assets": {
         "web.assets_frontend": [
-
-            # "website_product_configurator/static/src/js/config_form.js",
-            "website_product_configurator/static/src/js/config_form_11.js",
-
-            # "website_product_configurator/static/src/js/website_config_tour.js",
-            "website_product_configurator/static/src/js/website_config_tour_11.js",
-
+            "website_product_configurator/static/src/js/config_form.js",
+            "website_product_configurator/static/src/js/website_config_tour.js",
             "website_product_configurator/static/src/js/website_sale.js",
             "website_product_configurator/static/src/css/*.css",
             "website_product_configurator/static/src/scss/*.scss",
