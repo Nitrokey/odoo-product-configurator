@@ -29,10 +29,12 @@
     "assets": {
         "web.assets_frontend": [
             "website_product_configurator/static/src/js/config_form.js",
-            "website_product_configurator/static/src/js/website_config_tour.js",
             "website_product_configurator/static/src/js/website_sale.js",
             "website_product_configurator/static/src/css/*.css",
             "website_product_configurator/static/src/scss/*.scss",
-        ]
+        ],
+        "web.assets_tests": [
+            "website_product_configurator/static/tests/tours/**/*"
+        ],
     },
 }

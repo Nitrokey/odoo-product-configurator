@@ -2,11 +2,12 @@ odoo.define("website_product_configurator.tour_configuration", function(require)
     "use strict";
 
     var tour = require("web_tour.tour");
-    var base = require("web_editor.base");
+    // var base = require("web_editor.base");
+    require("web.dom_ready");
 
-    tour.register("config", {
+    tour.register("website_configurator", {
+            test: true,
             url: "/shop",
-            wait_for: base.ready(),
         },
         [{
                 content: "search 2 series",
@@ -139,6 +140,10 @@ odoo.define("website_product_configurator.tour_configuration", function(require)
                 content: "click on add to cart",
                 trigger: "#add_to_cart",
                 run: "click",
+            },
+            {
+                content: "Go to cart",
+                trigger: 'a[href*="/shop/cart"]',
             },
             {
                 content: "proceed to checkout product",

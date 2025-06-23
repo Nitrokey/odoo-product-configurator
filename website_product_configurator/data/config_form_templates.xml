@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+
     <!-- Base view for website configuration body -->
     <template id="product_configurator" name="Product Configuration Interface" track="1">
         <t t-call="website.layout">
@@ -202,10 +203,6 @@
         </div>
     </template>
 
-
-
-
-
     <!-- Configuration forms -->
     <template id="config_form_base" name="Base Config Form View"/>
 
@@ -312,10 +309,6 @@
             </div>
         </t>
     </template>
-
-
-
-
 
     <!-- Default configuration form (selectboxes ) -->
     <template id="config_form_select"
@@ -474,9 +467,6 @@
             </t>
         </xpath>
     </template>
-
-
-
 
     <!-- Product configurator checkout -->
     <template id="product_price">

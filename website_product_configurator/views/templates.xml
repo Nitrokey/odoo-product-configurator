@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+
     <template id="error_page">
         <t t-call="web.layout">
             <t t-set="html_data" t-value="{'style': 'height: 100%;'}"/>
@@ -45,4 +46,5 @@
             </div>
         </t>
     </template>
+
 </odoo>
