@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+product_website_configurator_config_line,Restrict Config Line,model_website_product_config_line,,1,0,0,0
+product_website_configurator_config_line_manager,Restrict Config Line Manager,model_website_product_config_line,,1,1,1,1
+user_website_config_domain_line,User Config Domain Line,model_website_product_config_domain_line,base.group_user,1,0,0,0
+user_website_config_domain,User Config Domain,model_website_product_config_domain,base.group_user,1,0,0,0
+portal_website_configurator_config_domain,Portal Config Domain,model_website_product_config_domain,base.group_portal,1,0,0,0
+portal_website_configurator_config_domain_line,Portal Config Domain Line,model_website_product_config_domain_line,base.group_portal,1,0,0,0
+product_website_configurator_config_domain_manager,Config Domain Manager,model_website_product_config_domain,,1,1,1,1
+product_website_configurator_config_domain_line_manager,Config Domain Line Manager,model_website_product_config_domain_line,,1,1,1,1
