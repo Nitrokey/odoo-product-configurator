@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="website_product_configurator_restriction" inherit_id="sale.variants">
-        <xpath expr="//t[@t-set='attribute_exclusions']" position="after">
+       <!--  <xpath expr="//t[@t-set='attribute_exclusions']" position="after">
             <t t-set="available_value_ids" t-value="[5]"/>
-            <div id="available_value_ids">
-            <span id="at"><t t-esc="available_value_ids"/></span>
-            </div>
-        </xpath>
+            <t t-esc="available_value_ids"/>
+        </xpath> -->
         <!-- For select option -->
 <!--         <xpath expr="//ul/t/li/t[3]/select/t/option" position="attributes">
             <attribute name="t-attf-class">
                 disabled
             </attribute> -->
-        <xpath expr="//option" position="attributes">
+        <!-- <xpath expr="//option" position="attributes">
             <attribute name="t-att-disabled">
                 ptav.product_attribute_value_id.id in available_value_ids and True or False
             </attribute>
-        </xpath>
+        </xpath> -->
         <!-- For radio button -->
-        <xpath expr="//input[@type='radio']" position="attributes">
+        <!-- <xpath expr="//input[@type='radio']" position="attributes">
             <attribute name="t-att-disabled">
                 ptav.product_attribute_value_id.id in available_value_ids and True or False
             </attribute>
-        </xpath>
+        </xpath> -->
     </template>
 </odoo>

@@ -134,13 +134,13 @@ class ProductTemplate(models.Model):
         for record in self:
             record.restrict_config_ok = not record.restrict_config_ok
 
-    def _create_variant_ids(self):
-        """Prevent configurable products from creating variants as these serve
-        only as a template for the product configurator"""
-        templates = self.filtered(lambda t: not t.restrict_config_ok)
-        if not templates:
-            return None
-        return super(ProductTemplate, templates)._create_variant_ids()
+    # def _create_variant_ids(self):
+    #     """Prevent configurable products from creating variants as these serve
+    #     only as a template for the product configurator"""
+    #     templates = self.filtered(lambda t: not t.restrict_config_ok)
+    #     if not templates:
+    #         return None
+    #     return super(ProductTemplate, templates)._create_variant_ids()
 
     def validate_domains_against_sels(self, domains, value_ids=None):
 
@@ -229,40 +229,40 @@ class ProductTemplate(models.Model):
 
     #     return avail_val_ids
 
-    def check_configurator_restriction(self, ptav, attribute_id):
-        print('\n\n Product------------', self)
-        print('\n\n ptav Name------------', attribute_id.name, '----------', ptav.name)
-        # print('\n\n value_ids Name------------', self.restrict_config_line_ids.value_ids.mapped('name'))
-        # print('\n\n self.restrict_config_line_ids------------', self.restrict_config_line_ids)
-        domain = {}#[]
-        # restrict_line = self.restrict_config_line_ids.filtered(
-        #     lambda a: a.attribute_line_id.attribute_id.id == attribute_id.id).value_ids.filtered(
-        #     lambda l: ptav.name == l.name)
+    def check_configurator_restriction(self, ptav, attribute_id, updates):
         value_id = ptav.product_attribute_value_id.id
         value_ids = attribute_id.value_ids.ids
-        restrict_line = self.env['website.product.config.line'].browse()  # empty recordset
-        for line in self.restrict_config_line_ids:
-            check_line = line.domain_id.domain_line_ids.filtered(
-                lambda l: value_id in l.value_ids.ids)
-            if check_line:
-                restrict_line |= line  # add line to the recordse
-        print('\n\n Doamin----------', restrict_line.mapped("domain_id"))
-        # restrict_line = self.restrict_config_line_ids.filtered(
-        #     lambda l: value_id in l.value_ids.ids)
-        # print('\n\n Doamin----------', restrict_line.mapped("domain_id"))
-        domains = restrict_line.mapped("domain_id").compute_domain()
-        print('\n\n domains----------', domains)
-        # print('\n\n value_ids----------', value_ids)
-        avail = self.validate_domains_against_sels(domains, value_ids)
-        if avail:
-            print('\n\n Value----------', ptav.product_attribute_value_id.name)
-            # domain.extend(restrict_line.value_ids.ids)
-            domain.update({attribute_id.name: restrict_line.value_ids.mapped('name')})
-        elif value_id in value_ids:
-            value_ids.remove(value_id)
-        print('\n\n domain----------', domain)
 
-        return domain
+        # Find matching config lines where the selected value is in domain
+        restrict_lines = self.restrict_config_line_ids.filtered(
+            lambda line: any(value_id in domain_line.value_ids.ids for domain_line in line.domain_id.domain_line_ids)
+        )
+
+        for line in restrict_lines:
+            domains = line.domain_id.compute_domain()
+            if self.validate_domains_against_sels(domains, value_ids):
+                available_lines = line.value_ids.mapped('name')
+
+                operator = domains[0][1]
+                if domains:
+                    if operator == 'in':
+                        available_lines = line.value_ids.mapped('name')
+                    else:
+                        allowed_values = line.attribute_line_id.value_ids - line.value_ids
+                        available_lines = allowed_values.mapped('name')
+
+                updates['values'] = {attribute_id.name: ptav.product_attribute_value_id.name}
+                updates['domain'].update({
+                    line.attribute_line_id.attribute_id.name: [
+                        line.attribute_line_id.value_ids.mapped('name'),
+                        available_lines,
+                        operator,
+                    ]
+                })
+
+        print('\n\n updates-----------',updates)
+        return updates
+
 
     # def unlink(self):
     #     """- Prevent the removal of configurable product templates
