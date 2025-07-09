@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+
     <!-- Configuration Restrictions -->
     <record id="website_product_config_domain_form_view" model="ir.ui.view">
         <field name="name">product.configurator.domain.form</field>
@@ -86,4 +87,5 @@
             </form>
         </field>
     </record>
+
 </odoo>

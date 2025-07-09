@@ -10,11 +10,13 @@
             name="value_ids"
             eval="[(6, 0, [
             ref('product_attribute_value_218i'),
-            ref('product_attribute_value_220i'),
+            ref('product_attribute_value_220i')]
+        )]"
+        />
+        <!-- ,
             ref('product_attribute_value_228i'),
             ref('product_attribute_value_m235i'),
-            ref('product_attribute_value_m235i_xdrive')])]"
-        />
+            ref('product_attribute_value_m235i_xdrive') -->
         <field name="domain_id" ref="product_config_domain_gasoline" />
     </record>
 
@@ -24,11 +26,13 @@
         <field
             name="value_ids"
             eval="[(6, 0, [
-          ref('product_attribute_value_218d'),
-          ref('product_attribute_value_220d'),
-          ref('product_attribute_value_220d_xdrive'),
-          ref('product_attribute_value_225d')])]"
+            ref('product_attribute_value_220d')]
+        )]"
         />
+<!--             ,
+          ref('product_attribute_value_218d'),
+          ref('product_attribute_value_220d_xdrive'),
+          ref('product_attribute_value_225d') -->
         <field name="domain_id" ref="product_config_domain_diesel" />
     </record>
 
@@ -41,9 +45,11 @@
         <field
             name="value_ids"
             eval="[(6, 0, [
-          ref('product_attribute_value_sport_line'),
-          ref('product_attribute_value_luxury_line')])]"
+          ref('product_attribute_value_sport_line')
+          ])]"
         />
+        <!-- ,
+          ref('product_attribute_value_luxury_line') -->
         <field name="domain_id" ref="product_config_domain_218_engine" />
     </record>
 
@@ -56,11 +62,13 @@
         <field
             name="value_ids"
             eval="[(6, 0, [
-          ref('product_attribute_value_model_sport_line'),
+            ref('product_attribute_value_model_sport_line')]
+        )]"
+        />
+        <!-- ,
           ref('product_attribute_value_model_luxury_line'),
           ref('product_attribute_value_model_m_sport'),
-          ref('product_attribute_value_model_advantage')])]"
-        />
+          ref('product_attribute_value_model_advantage') -->
         <field name="domain_id" ref="product_config_domain_luxury_lines" />
     </record>
 

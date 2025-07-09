@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+
     <record id="product_template_form_view_config_inherited" model="ir.ui.view">
         <field name="name">product.template.common.form</field>
         <field name="model">product.template</field>
@@ -22,15 +23,13 @@
                 <button
                     class="oe_stat_button"
                     name="toggle_config"
-                    string="Restrict Product"
                     type="object"
                     icon="fa-wrench"
                 >
                     <field
                         name="restrict_config_ok"
-                        widget="boolean_button"
-                        invisible="1"
-                        options="{&quot;active&quot;: &quot;Configure Restrict Product&quot;, &quot;inactive&quot;: &quot;Restrict Product&quot;}"
+                        options="{&quot;active&quot;: &quot;Configurable&quot;, &quot;inactive&quot;: &quot;Standard&quot;}"
+                        widget="boolean_button_web"
                     />
                 </button>
             </div>
@@ -42,11 +41,6 @@
                     name="configurator"
                     attrs="{'invisible': [('restrict_config_ok','=',False)]}"
                 >
-                <!-- <separator
-                        colspan="4"
-                        string="Configuration Restrictions"
-                        name="configurator_restrictions"
-                    /> -->
                 <field
                         name="restrict_config_line_ids"
                         attrs="{'readonly': [('attribute_line_ids','=',[])]}"
@@ -141,33 +135,6 @@
         </field>
     </record>
 
-   <!--  <record id="product_form_view_custom_vals_inherit" model="ir.ui.view">
-        <field name="name">product.configurator.form.view.custom.vals</field>
-        <field name="model">product.product</field>
-        <field name="inherit_id" ref="product.product_normal_form_view" />
-        <field name="arch" type="xml">
-            <xpath expr='//header' position="inside">
-                <button
-                    name="reconfigure_product"
-                    class="oe_highlight"
-                    type="object"
-                    string="Reconfigure Product"
-                    attrs="{'invisible': [('restrict_config_ok','=',False)]}"
-                />
-            </xpath>
-            <xpath expr="//div[@name='options']" position="inside">
-                <field
-                    name="config_preset_ok"
-                    attrs="{'invisible': [('restrict_config_ok', '=', False)]}"
-                />
-                <label
-                    for="config_preset_ok"
-                    attrs="{'invisible': [('restrict_config_ok', '=', False)]}"
-                />
-            </xpath>
-        </field>
-    </record> -->
-
     <record id="product_variant_easy_edit_view_inherit" model="ir.ui.view">
         <field name="name">product.product.view.form.easy</field>
         <field name="model">product.product</field>
@@ -176,43 +143,8 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='active']" position="after">
                 <field name="restrict_config_ok" invisible="1" />
-                <!-- <field
-                    name="config_preset_ok"
-                    attrs="{'invisible': [('restrict_config_ok', '=', False)]}"
-                /> -->
             </xpath>
-            <!-- <xpath expr="//field[@name='weight']" position="attributes">
-                <attribute
-                    name="attrs"
-                >{'readonly': [('restrict_config_ok', '=', True)]}</attribute>
-            </xpath> -->
         </field>
     </record>
 
-    <!-- <record id="product_kanban_view_inherited" model="ir.ui.view">
-        <field name="name">Product Kanban</field>
-        <field name="model">product.product</field>
-        <field name="inherit_id" ref="product.product_kanban_view" />
-        <field name="arch" type="xml">
-            <xpath expr="//kanban" position="inside">
-                <field name="restrict_config_ok" />
-            </xpath>
-            <xpath
-                expr="//div/div[2]/strong[hasclass('o_kanban_record_title')]"
-                position="after"
-            >
-                <div
-                    class="pull-right"
-                    attrs="{'invisible': [('restrict_config_ok', '=', False)]}"
-                >
-                    <a
-                        name="reconfigure_product"
-                        type="object"
-                        class="fa fa-repeat fa-lg"
-                    >
-                    </a>
-                </div>
-            </xpath>
-        </field>
-    </record> -->
 </odoo>

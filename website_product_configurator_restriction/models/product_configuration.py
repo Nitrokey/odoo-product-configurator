@@ -1,9 +1,7 @@
 import logging
-from ast import literal_eval
 
 from odoo import _, api, fields, models
-from odoo.exceptions import UserError, ValidationError
-from odoo.tools.misc import formatLang
+from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
 
@@ -64,7 +62,7 @@ class WebsiteProductConfigDomain(models.Model):
     )
     implied_ids = fields.Many2many(
         comodel_name="website.product.config.domain",
-        relation="product_config_domain_implied_rel",
+        relation="website_product_config_domain_implied_rel",
         string="Inherited",
         column1="domain_id",
         column2="parent_id",
@@ -129,7 +127,7 @@ class WebsiteProductConfigDomainLine(models.Model):
     condition = fields.Selection(selection=_get_domain_conditions, required=True)
     value_ids = fields.Many2many(
         comodel_name="product.attribute.value",
-        relation="product_config_domain_line_attr_rel",
+        relation="website_product_config_domain_line_attr_rel",
         column1="line_id",
         column2="attribute_id",
         string="Values",
@@ -200,7 +198,7 @@ class WebsiteProductConfigLine(models.Model):
     )
     value_ids = fields.Many2many(
         comodel_name="product.attribute.value",
-        relation="cfg_line_attr_val_id_rel",
+        relation="website_cfg_line_attr_val_id_rel",
         column1="cfg_line_id",
         column2="attr_val_id",
         string="Values",

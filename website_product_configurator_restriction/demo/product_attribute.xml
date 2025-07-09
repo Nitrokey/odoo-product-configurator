@@ -283,16 +283,17 @@
             eval="[(6,0,[
             ref('website_product_configurator_restriction.product_attribute_value_218i'),
             ref('website_product_configurator_restriction.product_attribute_value_220i'),
+            ref('website_product_configurator_restriction.product_attribute_value_220d'),
+            ]
+        )]"
+        />
+        <!-- ,
             ref('website_product_configurator_restriction.product_attribute_value_228i'),
             ref('website_product_configurator_restriction.product_attribute_value_m235i'),
             ref('website_product_configurator_restriction.product_attribute_value_m235i_xdrive'),
             ref('website_product_configurator_restriction.product_attribute_value_218d'),
-            ref('website_product_configurator_restriction.product_attribute_value_220d'),
             ref('website_product_configurator_restriction.product_attribute_value_220d_xdrive'),
-            ref('website_product_configurator_restriction.product_attribute_value_225d'),
-            ]
-        )]"
-        />
+            ref('website_product_configurator_restriction.product_attribute_value_225d'), -->
         <!-- <field name="required" eval="True" /> -->
     </record>
 
@@ -306,14 +307,15 @@
             name="value_ids"
             eval="[(6,0,[
             ref('website_product_configurator_restriction.product_attribute_value_sport_line'),
-            ref('website_product_configurator_restriction.product_attribute_value_model_sport_line'),
-            ref('website_product_configurator_restriction.product_attribute_value_luxury_line'),
-            ref('website_product_configurator_restriction.product_attribute_value_model_luxury_line'),
-            ref('website_product_configurator_restriction.product_attribute_value_model_m_sport'),
-            ref('website_product_configurator_restriction.product_attribute_value_model_advantage'),
+            ref('website_product_configurator_restriction.product_attribute_value_model_sport_line')
             ]
         )]"
         />
+        <!-- ,
+            ref('website_product_configurator_restriction.product_attribute_value_luxury_line'),
+            ref('website_product_configurator_restriction.product_attribute_value_model_luxury_line'),
+            ref('website_product_configurator_restriction.product_attribute_value_model_m_sport'),
+            ref('website_product_configurator_restriction.product_attribute_value_model_advantage'), -->
         <!-- <field name="required" eval="False" /> -->
     </record>
 
@@ -327,10 +329,11 @@
             name="value_ids"
             eval="[(6,0,[
             ref('website_product_configurator_restriction.product_attribute_value_red'),
-            ref('website_product_configurator_restriction.product_attribute_value_black'),
-            ref('website_product_configurator_restriction.product_attribute_value_silver')]
+            ref('website_product_configurator_restriction.product_attribute_value_black')]
         )]"
         />
+        <!-- ,
+            ref('website_product_configurator_restriction.product_attribute_value_silver') -->
         <!-- <field name="required" eval="True" /> -->
     </record>
 
@@ -344,10 +347,11 @@
             name="value_ids"
             eval="[(6,0,[
             ref('website_product_configurator_restriction.product_attribute_value_rims_378'),
-            ref('website_product_configurator_restriction.product_attribute_value_rims_387'),
-            ref('website_product_configurator_restriction.product_attribute_value_rims_384')]
+            ref('website_product_configurator_restriction.product_attribute_value_rims_387')]
         )]"
         />
+        <!-- ,
+            ref('website_product_configurator_restriction.product_attribute_value_rims_384') -->
         <!-- <field name="required" eval="True" /> -->
     </record>
 
@@ -361,10 +365,11 @@
             name="value_ids"
             eval="[(6,0,[
             ref('website_product_configurator_restriction.product_attribute_value_tapistry_black'),
-            ref('website_product_configurator_restriction.product_attribute_value_tapistry_oyster_black'),
-            ref('website_product_configurator_restriction.product_attribute_value_tapistry_coral_red_black')]
+            ref('website_product_configurator_restriction.product_attribute_value_tapistry_oyster_black')]
         )]"
         />
+        <!-- ,
+            ref('website_product_configurator_restriction.product_attribute_value_tapistry_coral_red_black') -->
         <!-- <field name="required" eval="True" /> -->
     </record>
 
@@ -395,12 +400,13 @@
             name="value_ids"
             eval="[(6,0,[
             ref('website_product_configurator_restriction.product_attribute_value_armrest'),
-            ref('website_product_configurator_restriction.product_attribute_value_smoker_package'),
-            ref('website_product_configurator_restriction.product_attribute_value_sunroof'),
-            ref('website_product_configurator_restriction.product_attribute_value_tow_hook'),
+            ref('website_product_configurator_restriction.product_attribute_value_smoker_package')
             ]
         )]"
         />
+        <!-- ,
+            ref('website_product_configurator_restriction.product_attribute_value_sunroof'),
+            ref('website_product_configurator_restriction.product_attribute_value_tow_hook'), -->
         <!-- <field name="required" eval="True" /> -->
         <!-- <field name="multi" eval="True" /> -->
     </record>
