@@ -4,7 +4,7 @@
     <!-- == FUEL == -->
 
     <record id="product_attribute_fuel" model="product.attribute">
-        <field name="name">Fuel</field>
+        <field name="name">Fuel Type</field>
     </record>
 
     <record id="product_attribute_value_gasoline" model="product.attribute.value">
@@ -135,7 +135,7 @@
     <!-- == COLOR == -->
 
     <record id="product_attribute_color" model="product.attribute">
-        <field name="name">Color</field>
+        <field name="name">colors</field>
     </record>
 
     <record id="product_attribute_value_red" model="product.attribute.value">
