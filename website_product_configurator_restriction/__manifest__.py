@@ -5,35 +5,31 @@
     "author": "Pledra, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "website": "https://github.com/OCA/product-configurator",
-    "category": "Website",
+    "category": "website",
     "depends": [
-        "website_sale"
+        "website_sale",
+        "product_configurator",
     ],
     "data": [
-        "security/ir.model.access.csv",
-        "demo/product_template.xml",
-        "demo/product_attribute.xml",
-        "demo/product_config_domain.xml",
-        "demo/product_config_lines.xml",
-        "data/menu_configurable_website_product.xml",
-        "views/product_config_view.xml",
+        "security/configurator_security.xml",
+        "data/cron.xml",
         "views/product_view.xml",
     ],
     "demo": [
-        "demo/product_template.xml",
-        "demo/product_attribute.xml",
-        "demo/product_config_domain.xml",
-        "demo/product_config_lines.xml",
+        "demo/product_template_demo.xml"
     ],
+    "images": ["static/description/cover.png"],
+    "application": True,
+    "installable": True,
+    "development_status": "Beta",
+    "maintainers": ["PCatinean"],
     "assets": {
         "web.assets_frontend": [
             "website_product_configurator_restriction/static/src/js/variant_mixin.js",
+            "website_product_configurator_restriction/static/src/js/website_sale.js",
         ],
-        "web.assets_backend": [
-            "website_product_configurator_restriction/static/src/scss/form_widget.scss",
-            "website_product_configurator_restriction/static/src/js/form_widgets.js",
+        "web.assets_tests": [
+            "website_product_configurator_restriction/static/tests/tours/**/*"
         ],
     },
-    "application": True,
-    "installable": True,
 }

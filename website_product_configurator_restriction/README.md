@@ -1,3 +1,3 @@
-#Odoo Product Configurator
+#Website Product Configurator Restriction
 
-This module facilitates to configure product on website and restrict attribute values.
+This module facilitates to restriction product on website.

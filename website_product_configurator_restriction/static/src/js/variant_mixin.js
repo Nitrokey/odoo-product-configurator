@@ -51,12 +51,10 @@ VariantMixin.handleCustomValues = function ($target) {
                         // Disable if not in allowed options
                         if (!allowedOptions.includes(valueName)) {
                             $opt.prop('disabled', true);
-                            // $opt.addClass('css_not_available');
-                            // $opt.closest('label').addClass('css_not_available');
-                            console.log(`❌ Disabled: ${valueName}`);
+                            // console.log(`❌ Disabled: ${valueName}`);
                         } else {
                             $opt.prop('disabled', false);
-                            console.log(`✅ Enabled: ${valueName}`);
+                            // console.log(`✅ Enabled: ${valueName}`);
                         }
                     });
                 }

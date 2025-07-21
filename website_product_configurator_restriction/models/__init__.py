@@ -1,2 +1,3 @@
-from . import product_configuration
-from . import product
+from . import product_template
+from . import product_config
+from . import sale_order

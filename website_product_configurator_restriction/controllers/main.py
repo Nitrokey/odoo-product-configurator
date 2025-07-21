@@ -1,11 +1,22 @@
-# -*- coding: utf-8 -*-
-from odoo import http
+import json
+
+from odoo import http, models
+from odoo.exceptions import UserError, ValidationError
 from odoo.http import request
+from odoo.tools.safe_eval import safe_eval
 
-from odoo.addons.website_sale.controllers.variant import WebsiteSaleVariantController
+from odoo.addons.http_routing.models.ir_http import slug
+from odoo.addons.website_sale.controllers.main import WebsiteSale
 
 
-class ConfigWebsiteSaleVariantController(WebsiteSaleVariantController):
+class ProductConfigWebsiteSale(WebsiteSale):
+
+    @http.route()
+    def product(self, product, category="", search="", **kwargs):
+        # Use parent workflow for regular products
+        return super(ProductConfigWebsiteSale, self).product(
+            product, category, search, **kwargs
+        )
 
     def convert_form_data(self, form_data):
         """convert the form data ptal to attribute"""
