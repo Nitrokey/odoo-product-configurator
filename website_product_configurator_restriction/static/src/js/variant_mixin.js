@@ -32,33 +32,35 @@ VariantMixin.handleCustomValues = function ($target) {
             ptav_id: PTAVId,
             form_data: form_data,
         }).then(function (domains) {
-            const domainData = domains.domain;
-            _.each(domainData, function (valueArray, attributeName) {
-                const allOptions = valueArray[0];  // ["White", "Black"]
-                const allowedOptions = valueArray[1];  // ["White"]
-                const operator = valueArray[2]; // e.g. "in"
-                // console.log(`\n\nAttribute: ${attributeName}`);
-                // console.log('All options:', allOptions);
-                // console.log('Allowed options:', allowedOptions);
-                const $selectOptions = $(`option[data-attribute_name="${attributeName}"]`);
-                const $radioOptions = $(`input[data-attribute_name="${attributeName}"]`);
-                const $alloptions = [...$selectOptions, ...$radioOptions];
+            if(domains){
+                const domainData = domains.domain;
+                _.each(domainData, function (valueArray, attributeName) {
+                    const allOptions = valueArray[0];  // ["White", "Black"]
+                    const allowedOptions = valueArray[1];  // ["White"]
+                    const operator = valueArray[2]; // e.g. "in"
+                    // console.log(`\n\nAttribute: ${attributeName}`);
+                    // console.log('All options:', allOptions);
+                    // console.log('Allowed options:', allowedOptions);
+                    const $selectOptions = $(`option[data-attribute_name="${attributeName}"]`);
+                    const $radioOptions = $(`input[data-attribute_name="${attributeName}"]`);
+                    const $alloptions = [...$selectOptions, ...$radioOptions];
 
-                if ($alloptions.length) {
-                    $alloptions.forEach(function (opt) {
-                        const $opt = $(opt);
-                        const valueName = $opt.data('value_name');
-                        // Disable if not in allowed options
-                        if (!allowedOptions.includes(valueName)) {
-                            $opt.prop('disabled', true);
-                            // console.log(`❌ Disabled: ${valueName}`);
-                        } else {
-                            $opt.prop('disabled', false);
-                            // console.log(`✅ Enabled: ${valueName}`);
-                        }
-                    });
-                }
-            });
+                    if ($alloptions.length) {
+                        $alloptions.forEach(function (opt) {
+                            const $opt = $(opt);
+                            const valueName = $opt.data('value_name');
+                            // Disable if not in allowed options
+                            if (!allowedOptions.includes(valueName)) {
+                                $opt.prop('disabled', true);
+                                // console.log(`❌ Disabled: ${valueName}`);
+                            } else {
+                                $opt.prop('disabled', false);
+                                // console.log(`✅ Enabled: ${valueName}`);
+                            }
+                        });
+                    }
+                });                
+            }
         });
 // Customisation End
             if ($customInput && $customInput.data('is_custom') === 'True') {

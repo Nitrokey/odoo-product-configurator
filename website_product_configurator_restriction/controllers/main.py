@@ -61,10 +61,12 @@ class ProductConfigWebsiteSale(WebsiteSale):
     @http.route(['/check/configurator/restriction'], type='json', auth="user", methods=['POST'])
     def check_exist_product(self, product_template_id=False, attribute_id=False, ptav_id=False, form_data={}):
         """ bypass custom value product create time from sale product configurator"""
+        product_template_id = request.env['product.template'].browse(int(product_template_id))
+        if not product_template_id or not (product_template_id and product_template_id.config_ok):
+            return False
         # prepare dictionary in formate needed to pass in onchage
         form_values = self.convert_form_data(form_data)
         updates = {'form_data': form_values, 'values': {}, 'domain': {}}
-        product_template_id = request.env['product.template'].browse(int(product_template_id))
         ptav_id = request.env['product.template.attribute.value'].browse(int(ptav_id))
         attribute_id = request.env['product.attribute'].browse(int(attribute_id))
         all_domain = product_template_id.check_configurator_restriction(ptav_id, attribute_id, updates)

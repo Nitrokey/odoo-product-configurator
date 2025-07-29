@@ -13,10 +13,6 @@
     "data": [
         "security/configurator_security.xml",
         "data/cron.xml",
-        "views/product_view.xml",
-    ],
-    "demo": [
-        "demo/product_template_demo.xml"
     ],
     "images": ["static/description/cover.png"],
     "application": True,
