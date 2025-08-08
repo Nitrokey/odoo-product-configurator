@@ -9,6 +9,7 @@
     "depends": [
         "website_sale",
         "product_configurator",
+        "product_configurator_sale",
     ],
     "data": [
         "security/configurator_security.xml",

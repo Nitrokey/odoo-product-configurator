@@ -31,9 +31,9 @@ VariantMixin.handleCustomValues = function ($target) {
             attribute_id: attributeId,
             ptav_id: PTAVId,
             form_data: form_data,
-        }).then(function (domains) {
-            if(domains){
-                const domainData = domains.domain;
+        }).then(function (data) {
+            if(data && data.is_configured){
+                const domainData = data.domain;
                 _.each(domainData, function (valueArray, attributeName) {
                     const allOptions = valueArray[0];  // ["White", "Black"]
                     const allowedOptions = valueArray[1];  // ["White"]
@@ -52,14 +52,14 @@ VariantMixin.handleCustomValues = function ($target) {
                             // Disable if not in allowed options
                             if (!allowedOptions.includes(valueName)) {
                                 $opt.prop('disabled', true);
-                                // console.log(`❌ Disabled: ${valueName}`);
+                                console.log(`❌ Disabled: ${valueName}`);
                             } else {
                                 $opt.prop('disabled', false);
-                                // console.log(`✅ Enabled: ${valueName}`);
+                                console.log(`✅ Enabled: ${valueName}`);
                             }
                         });
                     }
-                });                
+            });                
             }
         });
 // Customisation End
