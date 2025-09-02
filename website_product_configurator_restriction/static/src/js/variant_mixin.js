@@ -45,20 +45,61 @@ VariantMixin.handleCustomValues = function ($target) {
                     const $radioOptions = $(`input[data-attribute_name="${attributeName}"]`);
                     const $alloptions = [...$selectOptions, ...$radioOptions];
 
-                    if ($alloptions.length) {
-                        $alloptions.forEach(function (opt) {
-                            const $opt = $(opt);
-                            const valueName = $opt.data('value_name');
-                            // Disable if not in allowed options
-                            if (!allowedOptions.includes(valueName)) {
-                                $opt.prop('disabled', true);
-                                console.log(`❌ Disabled: ${valueName}`);
-                            } else {
-                                $opt.prop('disabled', false);
-                                console.log(`✅ Enabled: ${valueName}`);
+                if ($alloptions.length) {
+                    let activeSelected = false; // check if already have a valid selection
+
+                    $alloptions.forEach(function (opt) {
+                        const $opt = $(opt);
+                        const valueName = $opt.data('value_name');
+
+                        if (!allowedOptions.includes(valueName)) {
+                            // Disable and deselect if this is the selected one
+                            $opt.prop('disabled', true);
+
+                            if ($opt.is('option') && $opt.is(':selected')) {
+                                $opt.prop('selected', false);
                             }
-                        });
+                            if (($opt.is(':radio') || $opt.is(':checkbox')) && $opt.is(':checked')) {
+                                $opt.prop('checked', false);
+                            }
+
+                            console.log(`❌ Disabled & Deselected: ${valueName}`);
+                        } else {
+                            // Enable
+                            $opt.prop('disabled', false);
+
+                            // If nothing active is selected yet, choose the first valid one
+                            if (!activeSelected) {
+                                if ($opt.is('option') && $opt.is(':selected')) {
+                                    activeSelected = true; // already selected correctly
+                                } else if ($opt.is(':radio') && $opt.is(':checked')) {
+                                    activeSelected = true;
+                                } else if ($opt.is(':checkbox') && $opt.is(':checked')) {
+                                    activeSelected = true;
+                                }
+                            }
+                        }
+                    });
+
+                    // If after loop no active option is selected → pick first allowed
+                    if (!activeSelected) {
+                        const firstAllowed = $alloptions.filter(opt => {
+                            return allowedOptions.includes($(opt).data('value_name'));
+                        })[0];
+
+                        if (firstAllowed) {
+                            const $first = $(firstAllowed);
+                            if ($first.is('option')) {
+                                $first.prop('selected', true);
+                            }
+                            if ($first.is(':radio') || $first.is(':checkbox')) {
+                                $first.prop('checked', true);
+                            }
+                            console.log(`⭐ Auto-selected fallback: ${$first.data('value_name')}`);
+                        }
                     }
+                }
+
             });                
             }
         });
